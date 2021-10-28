@@ -1,0 +1,14 @@
+{
+  "aliyun.cms": {
+    "AccessKeyId": "",
+    "AccessKeySecret": "",
+    "RegionId": "cn-hongkong",
+    "Endpoint": "metrics.cn-hongkong.aliyuncs.com"
+  },
+  "aliyun.ecs": {
+    "AccessKeyId": "",
+    "AccessKeySecret": "",
+    "RegionId": "cn-hongkong",
+    "Endpoint": "ecs.aliyuncs.com"
+  }
+}
