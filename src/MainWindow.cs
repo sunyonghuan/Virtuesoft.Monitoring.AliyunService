@@ -48,6 +48,8 @@ namespace Virtuesoft.Monitoring.AliyunService
         }
         private void ToolStripButton_退出_Click(object? sender, EventArgs e) {
             mustQuit = true;
+
+            notify.Dispose();
             //Application.Exit();
             //Application.ExitThread();
             //System.Environment.Exit(0);
