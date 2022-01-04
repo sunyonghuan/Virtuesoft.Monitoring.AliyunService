@@ -1,6 +1,5 @@
-﻿using Caliburn.Light;
-using NetDimension.NanUI.DataServiceResource;
-using NetDimension.NanUI.ResourceHandler;
+﻿using NetDimension.NanUI.Browser.ResourceHandler;
+using NetDimension.NanUI.Resource.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;

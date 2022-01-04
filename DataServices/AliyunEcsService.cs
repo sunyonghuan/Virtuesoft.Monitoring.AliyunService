@@ -1,6 +1,6 @@
 ﻿using AlibabaCloud.SDK.Ecs20140526;
-using NetDimension.NanUI.DataServiceResource;
-using NetDimension.NanUI.ResourceHandler;
+using NetDimension.NanUI.Browser.ResourceHandler;
+using NetDimension.NanUI.Resource.Data;
 using Virtuesoft.Monitoring.AliyunService.Extensions;
 
 namespace Virtuesoft.Monitoring.AliyunService.DataServices

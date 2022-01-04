@@ -1,8 +1,5 @@
-﻿using Caliburn.Light;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using NetDimension.NanUI;
-using NetDimension.NanUI.DataServiceResource;
-using NetDimension.NanUI.LocalFileResource;
 using Virtuesoft.Monitoring.AliyunService.Extensions;
 
 namespace Virtuesoft.Monitoring.AliyunService
@@ -53,7 +50,7 @@ namespace Virtuesoft.Monitoring.AliyunService
         /// 配置Aliyun需要的服务
         /// </summary>
         /// <param name="services"></param>
-        public static void ConfiguaAliyunServices(SimpleContainer services)
+        public static void ConfiguaAliyunServices(ServiceContainer services)
         {
             //阿里云监控配置
             var cmsConfig = services.GetService<IConfiguration>().GetSection("aliyun.cms");

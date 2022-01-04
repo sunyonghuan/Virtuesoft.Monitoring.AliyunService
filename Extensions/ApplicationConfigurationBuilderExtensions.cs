@@ -1,5 +1,4 @@
-﻿using Caliburn.Light;
-using NetDimension.NanUI;
+﻿using NetDimension.NanUI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +29,7 @@ namespace Virtuesoft.Monitoring.AliyunService.Extensions
                     .Build();
                     runtime.Container.AddSingleton<IConfiguration>(configurationRoot);
                 };
-            }, ExtensionExecutePosition.MainProcessStartup);
+            }, ExtensionExecutePosition.MainProcessInitilized);
 
 
         /// <summary>
@@ -39,12 +38,12 @@ namespace Virtuesoft.Monitoring.AliyunService.Extensions
         /// <param name="app"></param>
         /// <param name="configuration"></param>
         /// <returns></returns>
-        public static ApplicationConfigurationBuilder UseConfiguraService(this ApplicationConfigurationBuilder app, Action<SimpleContainer>? configuration = null) 
+        public static ApplicationConfigurationBuilder UseConfiguraService(this ApplicationConfigurationBuilder app, Action<ServiceContainer>? configuration = null) 
            => app.Use(builder => {
                return (runtime, props) => {
                    configuration?.Invoke(runtime.Container);
                };
-           }, ExtensionExecutePosition.MainProcessStartup);
+           }, ExtensionExecutePosition.MainProcessInitilized);
         
         /// <summary>
         /// 添加所有的窗体到容器
@@ -74,7 +73,7 @@ namespace Virtuesoft.Monitoring.AliyunService.Extensions
                 });
 
                 };
-            }, ExtensionExecutePosition.MainProcessStartup);
+            }, ExtensionExecutePosition.MainProcessInitilized);
         
     }
 }

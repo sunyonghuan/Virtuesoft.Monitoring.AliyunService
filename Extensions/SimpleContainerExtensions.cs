@@ -1,7 +1,7 @@
-﻿using Caliburn.Light;
-using NetDimension.NanUI;
-using NetDimension.NanUI.DataServiceResource;
+﻿using NetDimension.NanUI;
 using NetDimension.NanUI.JavaScript;
+using NetDimension.NanUI.JavaScript.WindowBinding;
+using NetDimension.NanUI.Resource.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Virtuesoft.Monitoring.AliyunService.Extensions
 {
-    public static class SimpleContainerExtensions
+    public static class ServiceContainerExtensions
     {
         /// <summary>
         /// 添加一个瞬时服务
@@ -18,7 +18,7 @@ namespace Virtuesoft.Monitoring.AliyunService.Extensions
         /// <typeparam name="T"></typeparam>
         /// <param name="container"></param>
         /// <returns></returns>
-        public static SimpleContainer AddTransient<T>(this SimpleContainer container)
+        public static ServiceContainer AddTransient<T>(this ServiceContainer container)
         {
             container.RegisterPerRequest<T>(nameof(T));
             return container;
@@ -29,7 +29,7 @@ namespace Virtuesoft.Monitoring.AliyunService.Extensions
         /// <param name="container"></param>
         /// <param name="type"></param>
         /// <returns></returns>
-        public static SimpleContainer AddTransient(this SimpleContainer container,Type type)
+        public static ServiceContainer AddTransient(this ServiceContainer container,Type type)
         {
             container.RegisterPerRequest(type, type, type.FullName);
             return container;
@@ -40,7 +40,7 @@ namespace Virtuesoft.Monitoring.AliyunService.Extensions
         /// <param name="container"></param>
         /// <param name="type"></param>
         /// <returns></returns>
-        public static SimpleContainer AddSingleton(this SimpleContainer container, Type type)
+        public static ServiceContainer AddSingleton(this ServiceContainer container, Type type)
         {
             container.RegisterSingleton(type, type, type.FullName);
             return container;
@@ -51,7 +51,7 @@ namespace Virtuesoft.Monitoring.AliyunService.Extensions
         /// <typeparam name="T"></typeparam>
         /// <param name="container"></param>
         /// <returns></returns>
-        public static SimpleContainer AddSingleton<T>(this SimpleContainer container)
+        public static ServiceContainer AddSingleton<T>(this ServiceContainer container)
         {
             container.RegisterSingleton<T>(nameof(T));
             return container;
@@ -63,7 +63,7 @@ namespace Virtuesoft.Monitoring.AliyunService.Extensions
         /// <param name="container"></param>
         /// <param name="instance"></param>
         /// <returns></returns>
-        public static SimpleContainer AddSingleton<T>(this SimpleContainer container,T instance)
+        public static ServiceContainer AddSingleton<T>(this ServiceContainer container,T instance)
         {
             container.RegisterInstance<T>(instance,nameof(T));
             return container;
@@ -74,7 +74,7 @@ namespace Virtuesoft.Monitoring.AliyunService.Extensions
         /// <typeparam name="TService"></typeparam>
         /// <param name="container"></param>
         /// <returns></returns>
-        public static TService GetService<TService>(this SimpleContainer container)
+        public static TService GetService<TService>(this ServiceContainer container)
         => container.GetInstance<TService>(nameof(TService));
         /// <summary>
         /// 获取一个服务
@@ -82,35 +82,35 @@ namespace Virtuesoft.Monitoring.AliyunService.Extensions
         /// <typeparam name="TService"></typeparam>
         /// <param name="container"></param>
         /// <returns></returns>
-        public static IEnumerable<TService> GetServices<TService>(this SimpleContainer container)
+        public static IEnumerable<TService> GetServices<TService>(this ServiceContainer container)
         => container.GetAllInstances<TService>();
         /// <summary>
         /// 获取服务容器
         /// </summary>
         /// <param name="javaScript"></param>
         /// <returns></returns>
-        public static SimpleContainer? ServiceProvider(this JavaScriptExtensionBase javaScript)
+        public static ServiceContainer? ServiceProvider(this JavaScriptWindowBindingObject javaScript)
             => WinFormium.Runtime?.Container;
         /// <summary>
         /// 获取服务容器
         /// </summary>
         /// <param name="form"></param>
         /// <returns></returns>
-        public static SimpleContainer? ServiceProvider(this Formium form)
+        public static ServiceContainer? ServiceProvider(this Formium form)
             => WinFormium.Runtime?.Container;
         /// <summary>
         /// 获取服务容器
         /// </summary>
         /// <param name="app"></param>
         /// <returns></returns>
-        public static SimpleContainer? ServiceProvider(this ApplicationContext app)
+        public static ServiceContainer? ServiceProvider(this ApplicationContext app)
             => WinFormium.Runtime?.Container;
         /// <summary>
         /// 获取服务容器
         /// </summary>
         /// <param name="service"></param>
         /// <returns></returns>
-        public static SimpleContainer? ServiceProvider(this DataService  service)
+        public static ServiceContainer? ServiceProvider(this DataService  service)
             => WinFormium.Runtime?.Container;
         
     }

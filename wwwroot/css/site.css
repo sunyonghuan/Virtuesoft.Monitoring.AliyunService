@@ -4,6 +4,7 @@
     width: 100vw;
     display: block;
     color: #fff;
+    overflow:hidden;
 }
 
     body:after {

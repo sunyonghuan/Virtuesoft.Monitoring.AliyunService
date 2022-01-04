@@ -1,5 +1,4 @@
-﻿using Caliburn.Light;
-using NetDimension.NanUI;
+﻿using NetDimension.NanUI;
 using NetDimension.NanUI.JavaScript;
 using System;
 using System.Collections.Generic;

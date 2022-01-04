@@ -12,21 +12,23 @@ namespace Virtuesoft.Monitoring.AliyunService
 {
     internal class MainWindow : Formium
     {
-        public override HostWindowType WindowType =>  HostWindowType.Borderless;
+        public override HostWindowType WindowType =>  HostWindowType.SystemBorderless;
         private NotifyIcon notify;
         bool mustQuit = false;
         public override string StartUrl => "http://page.cloud.zpay/";
         public MainWindow()
         {
             Size = new Size(1024, 800);
-            Mask.BackColor = Color.Transparent;
-            Mask.Image = null;
+            
+            SplashScreen.Image = null;
             Title = "阿里云服务器监控";
-            StartPosition = FormStartPosition.CenterScreen;
-            BorderlessWindowProperties.BorderEffect = BorderEffect.None;
-            BorderlessWindowProperties.ShadowEffect = ShadowEffect.None;
-            ShowInTaskbar = false;
 
+            //var styles = UseExtendedStyles<BorderlessWindowStyle>();
+
+            //StartPosition = FormStartPosition.CenterScreen;
+            //styles.ShadowEffect = ShadowEffect.None;
+
+            
             var contextMenuStrip = new ContextMenuStrip();
             contextMenuStrip.Items.Add(new ToolStripButton("退出", null, new EventHandler(ToolStripButton_退出_Click)) { 
              
@@ -49,11 +51,11 @@ namespace Virtuesoft.Monitoring.AliyunService
             //Application.Exit();
             //Application.ExitThread();
             //System.Environment.Exit(0);
-            System.Diagnostics.Process.GetCurrentProcess().Kill();
+            Close();
         }
         private void Notify_DoubleClick(object? sender, EventArgs e)
         {
-            this.Show();
+            Show();
             Active();
         }
 
@@ -63,6 +65,10 @@ namespace Virtuesoft.Monitoring.AliyunService
             e.Canceled = true;
             this.Hide();
             
+        }
+
+        protected override void OnReady()
+        {
         }
     }
 }

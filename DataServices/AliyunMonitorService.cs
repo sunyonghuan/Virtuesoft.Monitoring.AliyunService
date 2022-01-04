@@ -1,6 +1,6 @@
 ﻿using AlibabaCloud.SDK.Cms20190101;
-using NetDimension.NanUI.DataServiceResource;
-using NetDimension.NanUI.ResourceHandler;
+using NetDimension.NanUI.Browser.ResourceHandler;
+using NetDimension.NanUI.Resource.Data;
 using Newtonsoft.Json.Linq;
 using Virtuesoft.Framework.JsonExtensions;
 using Virtuesoft.Monitoring.AliyunService.Extensions;
