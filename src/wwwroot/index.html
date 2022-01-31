@@ -22,6 +22,7 @@
                 <span id="period_value">15s</span>
                 <i class="layui-icon layui-icon-down layui-font-12"></i>
             </button>
+            <span id="balance">0.00 CNY</span>
         </div>
         <ul class="layui-btn-group system-commands">
             <li formium-command="minimize" class="layui-btn layui-btn-primary layui-btn-sm">
@@ -44,11 +45,11 @@
 
     </div>
     <script type="text/html" id="bg-template">
-        <style>
+    
             body:after {
                 background: url("images/{{parseInt(Math.random()*10)+1}}.jpg") !important;
             }
-        </style>
+    
     </script>
     <script type="text/html" id="ecs-template">
         {{# layui.each(d.Instance, function(index, item){ }}
@@ -106,14 +107,16 @@
                 , $ = layui.$
                 , laytpl = layui.laytpl
                 , $bgTmp = $("#bg-template").html()
-                , form = layui.form, element = layui.element
-                , laydate = layui.laydate
+                //, form = layui.form,
+                //element = layui.element
+                //, laydate = layui.laydate
                 , util = layui.util, dropdown = layui.dropdown,
                 $gn = $("#region_name"),
                 $pv = $("#period_value"),
                 region = "cn-hongkong",
                 $container = $(".container"),
                 $ecsTmp = $("#ecs-template").html(),
+                $balance = $("#balance"),
                 timeInvad = 10,
                 period="15";
 
@@ -275,11 +278,19 @@
             }
             changeBg = () => {
                 laytpl($bgTmp).render({}, function (html) {
-                    $("style").append(html);
+                    $("style").html(html);
                 });
             };
+            getBalance = () => {
+                $.get(aliyun + "bill/balance")
+                    .then(r => {
+                        return $balance.text(r);
+                    });
+            }
+            
             setInterval(getRunning, timeInvad * 1000);
             setInterval(changeBg, timeInvad * 3 * 1000);
+            setInterval(getBalance, 3 * 60 * 1000);
             $(function () {
                 dropdown.render({
                     elem: "#period",
@@ -303,7 +314,9 @@
                             }
                         });
                     });
+                changeBg();
                 getEcs();
+                getBalance();
             });
         });
     </script>

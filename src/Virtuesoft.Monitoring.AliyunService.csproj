@@ -15,13 +15,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AlibabaCloud.SDK.Cms20190101" Version="2.0.2" />
+    <PackageReference Include="AlibabaCloud.SDK.BssOpenApi20171214" Version="1.0.8" />
+    <PackageReference Include="AlibabaCloud.SDK.Cms20190101" Version="2.0.3" />
     <PackageReference Include="AlibabaCloud.SDK.Ecs20140526" Version="2.1.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="6.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
-    <PackageReference Include="NetDimension.NanUI" Version="0.9.90.13" />
+    <PackageReference Include="NetDimension.NanUI" Version="0.9.90.28" />
     <PackageReference Include="NetDimension.NanUI.Runtime" Version="90.6.7.1" />
-    <PackageReference Include="Virtuesoft.Framework.JsonExtensions" Version="1.0.3" />
+    <PackageReference Include="Virtuesoft.Framework.JsonExtensions" Version="1.0.5" />
   </ItemGroup>
 
   <ItemGroup>
@@ -167,6 +168,6 @@
     </None>
   </ItemGroup>
 
-  <ProjectExtensions><VisualStudio><UserProperties app_1json__JsonSchema="https://appsemble.app/api.json" /></VisualStudio></ProjectExtensions>
+  <ProjectExtensions><VisualStudio><UserProperties app_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
 
 </Project>

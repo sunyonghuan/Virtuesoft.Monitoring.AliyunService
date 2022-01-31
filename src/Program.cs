@@ -74,6 +74,17 @@ namespace Virtuesoft.Monitoring.AliyunService
             };
             var aliyunEcs = new AlibabaCloud.SDK.Ecs20140526.Client(aliyunEcsConfig);
             services.AddSingleton(aliyunEcs);
+            //阿里云bill
+            var billConfig = services.GetService<IConfiguration>().GetSection("aliyun.bill");
+            var aliyunBillConfig = new AlibabaCloud.OpenApiClient.Models.Config()
+            {
+                AccessKeyId = billConfig["AccessKeyId"],
+                AccessKeySecret = billConfig["AccessKeySecret"],
+                RegionId = billConfig["RegionId"],
+                Endpoint = billConfig["Endpoint"]
+            };
+            var aliyunbill = new AlibabaCloud.SDK.BssOpenApi20171214.Client(aliyunBillConfig);
+            services.AddSingleton(aliyunbill);
         }
     }
 }
